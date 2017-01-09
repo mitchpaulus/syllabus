@@ -1,0 +1,326 @@
+\documentclass[11pt]{article}
+%\usepackage{geometry}
+\usepackage[inner=1.5cm,outer=1.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\pagestyle{empty}
+\usepackage{graphicx}
+\usepackage{fancyhdr, lastpage, bbding, pmboxdraw}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{longtable}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{booktabs}
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.7,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{red}{rgb}{.98,0,0}
+\usepackage[colorlinks,pagebackref,pdfusetitle,urlcolor=darkblue,citecolor=darkblue,linkcolor=darkred,bookmarksnumbered,plainpages=false]{hyperref}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\pagestyle{fancyplain}
+\fancyhf{}
+\lhead{ \fancyplain{}{MEEN 315 Principles of Thermodynamics, Spr 2017} }
+%\chead{ \fancyplain{}{} }
+\rhead{ \fancyplain{}{\today} }
+%\rfoot{\fancyplain{}{page \thepage\ of \pageref{LastPage}}}
+\fancyfoot[RO, LE] {page \thepage\ of \pageref{LastPage} }
+\thispagestyle{plain}
+
+%%%%%%%%%%%% LISTING %%%
+\usepackage{listings}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\usepackage{verbatim} % used to display code
+\usepackage{fancyvrb}
+\usepackage{acronym}
+\usepackage{amsthm}
+\VerbatimFootnotes % Required, otherwise verbatim does not work in footnotes!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{center}
+{\Large \textsc{Principles of Thermodynamics}}
+\end{center}
+\begin{center}
+Spring 2017
+\end{center}
+%\date{September 26, 2014}
+
+\begin{center}
+\rule{6in}{0.4pt}
+\begin{minipage}[t]{.75\textwidth}
+\begin{tabular}{llcccll}
+\textbf{Instructor:} & Mitchell Paulus & & &  & \textbf{Time:} & MWF 4:10-5:00 PM \\
+\textbf{Email:} &  \href{mailto:paulusm14@gmail.com}{paulusm14@gmail.com} & & & & \textbf{Place:} & RICH 114  \\
+\textbf{GitHub username:} & @mitchpaulus &&&  & \textbf{Office:} & ESL RM 187 \\
+\end{tabular}
+\end{minipage}
+\rule{6in}{0.4pt}
+\end{center}
+\vspace{.5cm}
+\setlength{\unitlength}{1in}
+\renewcommand{\arraystretch}{1}
+
+\vskip.15in
+\noindent\textbf{Objectives:}  
+Theory and application of energy methods in engineering, energy transfer by heat, work and mass;
+thermodynamic properties;
+analysis of open and closed systems;
+the second law of thermodynamics and entropy;
+gas, vapor and refrigeration cycles; and applications.
+
+%%\noindent\textbf{Course Pages:} \begin{enumerate}
+%%\item \url{youtube.com/c/MitchellPaulus}
+%%\end{enumerate}
+
+\vskip.15in
+\noindent\textbf{Office Hours:} Mon. 5-6, Tues. 11-12, Wed. 3-4, or by appointment.
+
+\vskip.15in
+\noindent\textbf{Main References:} %\footnotemark
+This is a  restricted list of various interesting and useful books that will be touched during the course. You need to consult them occasionally.
+\begin{itemize}
+    \item Moran, Shapiro, Boettner and Bailey. 2014. \textit{Fundamentals of Engineering Thermodynamics, 8th edition}.
+\end{itemize} 
+
+% \footnotetext{Downloadable ebook versions are available on AeLP.}
+
+
+\vskip.15in
+\noindent\textbf{Prerequisites:}
+MEEN 221 or MEEN 225, and MATH 251 or 253.
+It is the student's responsibility to ensure proper requirements are satisfied for enrollment in this course.
+Students not meeting course pre-requisites will be automatically dropped after the first week of class.
+
+\vspace*{.15in}
+
+\noindent\textbf{Examinations:}
+Two midterm exams and a comprehensive final exam are scheduled.
+Unexcused absences will result in a grade of zero for missed examinations.
+Known absences for a scheduled exam must be brought to the attention of the instructor as soon as possible.
+The second exam is comprehensive with emphasis on material covered since the first exam.
+The final exam is comprehensive with emphasis on the material covered since the second exam.
+YOU WILL NOT RECEIVE YOUR FINAL EXAM, OR A COPY OF YOUR FINAL EXAM, AT THE END OF THE SEMESTER.
+You may stop by my office to review your graded final exam after establishing an appointment with me.
+
+
+\vspace*{.15in}
+\noindent\textbf{Grading Policy:} Homework (15\%), Quizzes (15\%),  Midterm 1 (20\%), Midterm 2 (20\%), Final (30\%). %Four Projects (40\% = 4 * 10\%)
+
+\vskip.15in
+\noindent\textbf{Important Dates:}
+\begin{center} \begin{minipage}{3.8in}
+\begin{flushleft}
+Midterm \#1      \dotfill Feb 22, 7:00-9:00 PM \\
+Midterm \#2      \dotfill April 5, 7:00-9:00 PM \\
+%Project Deadline \dotfill ~Month Day \\
+Final Exam       \dotfill  TBA  \\
+\end{flushleft}
+\end{minipage}
+\end{center}
+
+\vskip.15in
+\noindent\textbf{Class Policy:}  
+\begin{itemize}
+\item Regular attendance is essential and expected.
+\end{itemize}
+
+
+\vskip.15in
+\noindent\textbf{Honor Code:}
+``An Aggie does not lie, cheat, or steal, or tolerate those who do.''
+Upon accepting admission to Texas A\&M University, a student immediately assumes a commitment to uphold the Honor Code, to accept responsibility for learning and to follow the philosophy and rules of the Honor System.
+Students will be required to state their commitment on examinations, research papers, and other academic work.
+Ignorance of the rules does not exclude any member of the Texas A\&M University community from the requirements or the processes of the Honor System.
+For additional information please visit: aggiehonor.tamu.edu
+
+On all course work, assignments, and examinations at Texas A\&M University, the following Honor Pledge is implied regardless if it is preprinted and signed by the student: 
+``On my honor, as an Aggie, I have neither given nor received unauthorized aid on this academic work.''
+
+
+\vskip.15in
+\noindent\textbf{ADA:}
+The Americans with Disabilities Act (ADA) is a federal antidiscrimination statute that provides comprehensive civil rights protection for persons with disabilities.
+Among other things, this legislation requires that all students with disabilities be guaranteed a learning environment that provides for reasonable accommodation of their disabilities.
+If you believe you have a disability requiring an accommodation, please contact Disability Services, currently located in the Disability Services building at the Student Services at White Creek complex on west campus or call 9798451637.
+For additional information, visit http://disability.tamu.edu.
+
+
+\clearpage
+
+\begin{landscape}
+\noindent\textbf{Tentative Schedule}
+{
+    \small
+    \begin{longtable}{llllp{8cm}lp{7cm}}
+\multicolumn{2}{c}{Lecture/Week} &   & Date   & Topic (Lecture Coverage)                                                       & Text Coverage & Notes                                                                   \\ \midrule \endhead
+1    & 1  & W & 18-Jan & Introduction, Concepts and Definitions                                         &       & HW 1 Out                                                                \\
+2    & 1  & F & 20-Jan & Units, Dimensions, Volume, Pressure                                            &       & \\
+3    & 2  & M & 23-Jan & Temperature, Problem Solving Methodology                                       &       & \\
+4    & 2  & W & 25-Jan & Mechanical Concepts of Energy, Basic Work Processes                            &       & HW 1 DUE; HW 2 Out                                                      \\
+5    & 2  & F & 27-Jan & Energy Transfer by Heat, Closed System Energy Balance                          &       & \\
+6    & 3  & M & 30-Jan & Cycle Energy Analysis                                                          &       & \\
+7    & 3  & W & 1-Feb  & Phases, Fixing the State                                                       &       & HW 2 DUE; HW 3 Out                                                      \\
+9    & 3  & F & 3-Feb  & Using Tables for Pressure, Temperature, and Specific Volume                    &       & \\
+10   & 4  & M & 6-Feb  & Using Tables of Energy and Enthalpy, Energy Balance with Properties            &       & HW 3 DUE; HW 4 Out.                                                     \\
+11   & 4  & W & 8-Feb  & Specific Heats, Evaluating Properties of Solids and Liquids                    &       & \\
+12   & 4  & F & 10-Feb & General Compressibility Charts and Ideal Gas Model                             &       & \\
+13   & 5  & M & 13-Feb & Property Changes and Energy Balances of Ideal Gases                            &       & HW 4 DUE, HW 5 Out (HW5 material is covered on Exam 1)                  \\
+14   & 5  & W & 15-Feb & Polytropic Processes                                                           &       & End of Exam 1 Material (through Lecture 14). Sample exam posted online. \\
+15   & 5  & F & 17-Feb & Conservation of Mass                                                           &       & \\
+16   & 6  & M & 20-Feb & Control Volume Conservation of Energy and Steady-State Analysis                &       & HW 5 DUE.                                                               \\
+     &    & W & 22-Feb & Optional Review in Class                                                       &       & \\
+17   & 6  & W & 22-Feb & \textbf{EXAM 1}                                                                &       & EXAM 1 (7 - 9 PM), Location TBA                                         \\
+18   & 6  & F & 24-Feb & Nozzles and Diffusers                                                          &       & \\
+19   & 7  & M & 27-Feb & Turbines, Compressors, and Pumps                                               &       & HW 6 Out.                                                               \\
+20   & 7  & W & 1-Mar  & Heat Exchangers and Throttling Devices                                         &       & \\
+21   & 7  & F & 3-Mar  & System Integration and Transient Analysis                                      &       & \\
+22   & 8  & M & 6-Mar  & Introducing the Second Law, Statements of the Second Law                       &       & HW 6 DUE; HW 7 Out                                                      \\
+23   & 8  & W & 8-Mar  & Irreversible and Reversible Processes, Interpreting the Kelvin Plank Statement &       & \\
+24   & 8  & F & 10-Mar & Second Law applied to Thermodynamic Cycles, Heat Engines                       &       & \\
+     &    &   &        & \textbf{SPRING BREAK MAR. 13-17}                                               &       & \\
+25   & 9  & M & 20-Mar & Refrigeration / Heat Pumps, Maximum Performance                                &       & HW 7 DUE; HW 8 Out                                                      \\
+26   & 9  & W & 22-Mar & Carnot Cycle and Clausius Inequality                                           &       & \\
+27   & 9  & F & 24-Mar & Entropy and Property Data                                                      &       & \\
+28   & 10 & M & 27-Mar & TdS Equations, Entropy Changes for Solids and Liquids                          &       & HW 8 DUE; HW 9 Out (HW 9 material is covered on Exam 2).                \\
+29   & 10 & W & 29-Mar & Entropy Changes of Ideal Gases, Internally Reversible Closed Processes         &       & End of Exam 2 material (through Lecture 29). Sample exam posted online. \\
+30   & 10 & F & 31-Mar & Closed System Entropy Balance                                                  &       & \\
+31   & 11 & M & 3-Apr  & Increase in Entropy Principle                                                  &       & HW9 DUE                                                                 \\
+     &    & W & 5-Apr  & Optional Review in Class                                                       &       & \\
+32   & 11 & W & 5-Apr  & \textbf{EXAM 2}                                                                &       & EXAM 2 (7 - 9 PM), Location TBA                                         \\
+33   & 11 & F & 7-Apr  & Control Volume Entropy Equation, Steady State Analysis                         &       & \\
+34   & 12 & M & 10-Apr & Isentropic Processes, Isentropic Efficiencies                                  &       & HW 10 Out.                                                              \\
+35   & 12 & W & 12-Apr & Rankine Vapor Power Cycle                                                      &       & \\
+     &    & F & 14-Apr & \textbf{Reading day, Good Friday, no class.}                                   &       & \\
+36   & 13 & M & 17-Apr & Rankine Vapor Power Cycle                                                      &       & \\
+37   & 13 & W & 19-Apr & Gas Power Cycles                                                               &       & HW 10 DUE; HW 11 Out.                                                   \\
+38   & 13 & F & 21-Apr & Gas Power Cycles                                                               &       & \\
+39   & 14 & M & 24-Apr & Refrigeration and Heat Pump Cycles                                             &       & \\
+40   & 14 & W & 26-Apr & Refrigeration and Heat Pump Cycles                                             &       & \\
+41   & 14 & F & 28-Apr & Cushion                                                                        & Notes & \\
+42   & 15 & M & 1-May  & Conclusion, Course Evaluation                                                  & Notes & HW 11 DUE.                                                              \\
+43   & 15 & T & 2-May  & Redined Day                                                                    &       & \\
+     &    &   &        & Final Exam Review                                                              &       & TBD                                                                     \\
+     &    &   &        & \textbf{FINAL EXAM}                                                                     &       & TIME (Room: Ordinary Classroom).
+\end{longtable}
+}
+\end{landscape}
+
+%%2&1&8/31
+%%(W)&&1.4 – 1.6&&Video: Example 1 – English Units
+%%Video: Lecture 1 – What is Thermodynamics?
+%%3&1&9/2
+%%(F)&Temperature, Problem Solving Methodology&1.7 – 1.9&&
+%%4&2&9/5
+%%(M)&Mechanical Concepts of Energy, Basic Work Processes&2.1 – 2.2&HW 1 DUE; HW 2 Out
+%%Team Selections DUE&
+%%5&2&9/7
+%%(W)&Energy Transfer by Heat, Closed System Energy Balance&2.3 – 2.5&&Video: Example 2 - Electric Motors
+%%Video: Example 3 - Wind Mills
+%%6&2&9/9
+%%(F)&Cycle Energy Analysis&2.6&&
+%%7&3&9/12
+%%(M)&Phases, Fixing the State&3.1&HW 2 DUE; HW 3 Out&
+%%8&3&9/14
+%%(W)&P-V-T Relationships, Phase Changes&3.2 – 3.3&&Video: Lecture 2 – Phase Change and Property Tables
+%%9&3&9/16
+%%(F)&Using Tables for Pressure, Temperature, and Specific Volume&3.4 – 3.5&
+%%&Video: Example 4 - Using Tables (Water and R-134a)
+%%10&4&9/19
+%%(M)&Using Tables of Energy and Enthalpy, Energy Balance with Properties&3.6 – 3.8&HW 3 DUE; HW 4 Out.&
+%%11&4&9/21
+%%(W)&Specific Heats, Evaluating Properties of Solids and Liquids&3.9 – 3.10&&
+%%12&4&9/23
+%%(F)&General Compressibility Charts and Ideal Gas Model&3.11 – 3.12&&Video: Lecture 3 – Ideal Gases
+%%13&5&9/26
+%%(M)&Property Changes and Energy Balances of Ideal Gases&3.13 – 3.14&HW 4 DUE, HW 5 Out (HW5 material is covered on Exam 1)&
+%%14&5&9/28
+%%(W)&Polytropic Processes&3.15&End of Exam 1 Material (through Lecture 14). Sample exam posted online.&Video: Lecture 4 – Boundary Work
+%%Video: Example 5 - Closed System Unknown State 2
+%%15&5&9/30
+%%(F)&Conservation of Mass
+%%&4.1 – 4.3&&
+%%16&6&10/3
+%%(M)&Control Volume Conservation of Energy and Steady-State Analysis&4.4 – 4.5&HW 5 DUE.&
+%%&&10/5
+%%(W)&Optional Review in Class&&&
+%%17&6&10/6
+%%(R)&EXAM 1&&EXAM 1 (7 – 9 PM), Location TBA&
+%%18&6&10/7
+%%(F)&Nozzles and Diffusers&4.6&&Video: Lecture 6 – Nonwork SS Devices
+%%Video: Example 7 - SS Non Work Device
+%%19&7&10/10
+%%(M)&Turbines, Compressors, and Pumps&4.7 – 4.8&HW 6 Out.
+%%&Video: Lecture 5 – SS Work Devices
+%%Video: Example 6 - SS Work Device
+%%20&7&10/12
+%%(W)&Heat Exchangers and Throttling Devices&4.9 – 4.10&&
+%%21&7&10/14
+%%(F)&System Integration and Transient Analysis&4.11 – 4.12&&
+%%22&8&10/17
+%%(M)&Introducing the Second Law, Statements of the Second Law&5.1 – 5.2&HW 6 DUE; HW 7 Out
+%%&Video: Lecture 7 – 2nd Law Principles
+%%23&8&10/19
+%%(W)&Irreversible and Reversible Processes, Interpreting the Kelvin Plank Statement&5.3 – 5.4&&Video: Lecture 8 - Reversible Irreversible Processes
+%%24&8&10/21
+%%(F)&Second Law applied to Thermodynamic Cycles, Heat Engines&5.5 – 5.6&&
+%%25&9&10/24
+%%(M)&Refrigeration / Heat Pumps, Maximum Performance&5.7, 5.9&HW 7 DUE; HW 8 Out&
+%%26&9&10/26
+%%(W)&Carnot Cycle and Clausius Inequality&5.10 – 5.11&&
+%%27&9&10/28
+%%(F)&Entropy and Property Data&6.1 – 6.2&&
+%%28&10&10/31
+%%(M)&TdS Equations, Entropy Changes for Solids and Liquids&6.3 – 6.4&HW 8 DUE; HW 9 Out (HW 9 material is covered on Exam 2). 
+%%&
+%%29&10&11/2
+%%(W)&Entropy Changes of Ideal Gases, Internally Reversible Closed Processes&6.5 – 6.6&End of Exam 2 material (through Lecture 29). Sample exam posted online.&
+%%30&10&11/4
+%%(F)&Closed System Entropy Balance&6.7&&
+%%31&11&11/7
+%%(M)&Increase in Entropy Principle&6.8&HW9 DUE&
+%%&&11/9
+%%(W)&Optional Review in Class&&&
+%%32&11&11/10
+%%(R)&EXAM 2&&EXAM 2 (7 – 9 PM), Location TBA&
+%%33&11&11/11
+%%(F)&Control Volume Entropy Equation, Steady State Analysis&6.9 – 6.10&&
+%%34&12&11/14
+%%(M)&Isentropic Processes, Isentropic Efficiencies&6.11 – 6.12&HW 10 Out.&Video: Lecture 9 – Isentropic Efficiency
+%%Video: Example 8 - Isentropic Efficiency
+%%Video: Example 9 – SS Device Polytropic Process
+%%35&12&11/16
+%%(W)&Rankine Vapor Power Cycle&8.1 – 8.2&&Video: Lecture 10 – Vapor Power Cycles
+%%Video: Lecture 11 – Reheat and Air Cycles
+%%36&12&11/18
+%%(F)&Rankine Vapor Power Cycle&8.3 – 8.4&&
+%%37&13&11/21
+%%(M)&Gas Power Cycles&9.1 – 9.2&HW 10 DUE; HW 11 Out.&
+%%&&11/23
+%%(W)&Reading day, no class.&&&
+%%&&11/24
+%%(R)&Thanksgiving Holiday&&&
+%%&&11/25
+%%(F)&Thanksgiving Holiday, no class.&&&
+%%38&14&11/28
+%%(M)&Gas Power Cycles&9.3 – 9.4&&
+%%39&14&11/30
+%%(W)&Refrigeration and Heat Pump Cycles
+%%&10.1 – 10.2
+%%&&
+%%40&14&12/2
+%%(F)&Refrigeration and Heat Pump Cycles&10.3 – 10.4&&
+%%41&13&12/5
+%%(RF)&Cushion&Notes&&
+%%42&13&12/7
+%%(W)&Conclusion, Course Evaluation&Notes&HW 11 DUE.&
+%%&&??&Final Exam Review&&TBD&
+%%&&??&FINAL EXAM&&TIME (Room: Ordinary Classroom).&
+%%
+
+
+%%%%%% THE END 
+\end{document} 
